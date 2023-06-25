@@ -13,7 +13,21 @@ class TestNode(unittest.TestCase):
 
 class TestStack(unittest.TestCase):
 
+    def test_push(self):
+        stack = Stack()
+        stack.push("data1")
+        stack.push("data2")
+        self.assertEqual(stack.top.data, "data2")
+
     def test_pop(self):
         stack = Stack()
         stack.push("data1")
-        self.assertEqual(stack.pop(), "data1")
+        stack.push("data2")
+        data = stack.pop()
+        self.assertEqual(data, "data2")
+
+    def test_str(self):
+        stack = Stack()
+        stack.push("data1")
+        stack.push("data2")
+        self.assertEqual(str(stack), "Node(data2, Node(data1, None))")
